@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="panel panel-default">
+    <div class="panel-heading">用户信息</div>
+    <div class="panel-body">
+        <div id="info">
+
+        </div>
+
+        <!--列表模板-->
+        <table class="table table-bordered" style="margin-top: 5px;">
+            <thead>
+            <tr>
+                <th>用户昵称</th>
+                <th>手机号码</th>
+                <th>密码</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="user:${userlist}">
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.phone}"></td>
+                <td th:text="${user.password}"></td>
+                <td>
+                    <a th:href="@{/user/update(id=${user.id})}">修改</a> |
+                    <a href="javascript:void(0)" class="del" th:id="${user.id}">删除</a>
+                </td>
+            </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://cdn.staticfile.org/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+    $('.del').bind('click',function () {
+        var id = $(this).attr('id');
+        if (window.confirm('确认删除该行数据？')) {
+            //alert('删除')
+            $.ajax({
+                url:'/user/delete?id='+id,
+                type:'GET',
+                dataType:'json',
+                success:function (data) {
+                    alert(data.code + ':' + data.msg)
+                    if (data.code == "系统提示"){
+                        $('#info').html(data.msg)
+                        setTimeout(function () {
+                            //2秒后执行以下代码
+                            window.location.href='/user/list'
+                        },1000)
+                    }
+                }
+            })
+        }
+    });
+</script>
+</body>
+</html>

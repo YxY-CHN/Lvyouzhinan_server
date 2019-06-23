@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="panel panel-default">
+    <div class="panel-heading">更新管理员信息</div>
+    <div class="panel-body">
+        <form action="/admin/update" method="post" class="form-horizontal">
+            <input type="hidden" name="id" th:value="${admin.id}">
+            <div class="form-group">
+                <label class="col-md-1 control-label">管理员</label>
+                <div class="col-md-5">
+                    <input class="form-control" type="text" name="mobile" readonly="readonly"
+                           th:value="${admin.name}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-1 control-label">密码</label>
+                <div class="col-md-5">
+                    <input class="form-control" type="text" name="password" th:value="${admin.password}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-1 col-md-11">
+                    <button type="submit" class="btn btn-default">保存</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

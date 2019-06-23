@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>旅游指南管理后台</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        li {
+            list-style-type: none;
+        }
+    </style>
+</head>
+
+<body>
+<!--布局-->
+<div class="container-fluid" style="margin-top: 10px;">
+
+    <!--头部区域-->
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">旅游指南管理后台</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="row">
+        <!--导航区域-->
+        <div class="col-md-2" style="margin-right: -25px;">
+            <div class="panel panel-default">
+                <div class="panel-heading">旅游指南管理后台</div>
+                <div class="panel-body" style="height: 500px;">
+                    <ul style="padding-left: 5px;">
+                        <li>
+                            <a href="/admin/list" target="main-body">管理员</a>
+                        </li>
+
+                        <li>
+                            <a href="/article/add" target="main-body">文章添加</a>
+                        </li>
+
+                        <li>
+                            <a href="/article/list" target="main-body">文章列表</a>
+                        </li>
+
+                        <li>
+                            <a href="/comment/list" target="main-body">评论管理</a>
+                        </li>
+
+                        <li>
+                            <a href="/user/list" target="main-body">用户管理</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--内容区域-->
+        <div class="col-md-10">
+            <iframe src="" frameborder="0" scrolling="no" id="main-body" name="main-body" width="100%"
+                    height="1500px"></iframe>
+        </div>
+    </div>
+</div>
+</body>
+</html>

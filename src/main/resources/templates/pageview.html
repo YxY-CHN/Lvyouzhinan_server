@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="panel panel-default">
+    <div class="panel-heading">文章列表</div>
+    <div class="panel-body">
+
+        <!--新增链接-->
+        <div style="margin-top: 5px;">
+            <a class="btn btn-primary" href="/article/add">新增</a>
+        </div>
+        <div id="info">
+
+        </div>
+
+        <!--列表模板-->
+        <table class="table table-bordered" style="margin-top: 5px;">
+            <thead>
+            <tr>
+                <th style="width: 10%">标题</th>
+                <th style="width: 5%">城市</th>
+                <th>图片</th>
+                <th>内容</th>
+                <th style="width: 4%">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="article:${articlelist}">
+                <td th:text="${article.title}"></td>
+                <td th:text="${article.area}"></td>
+                <td th:text="${article.image}"></td>
+                <td th:text="${article.content}"></td>
+                <td>
+                    <a th:href="@{/article/update(id=${article.id})}">修改</a> |
+                    <a href="javascript:void(0)" class="del" th:id="${article.id}">删除</a>
+                </td>
+            </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://cdn.staticfile.org/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+    $('.del').bind('click',function () {
+        var id = $(this).attr('id');
+        if (window.confirm('确认删除该行数据？')) {
+            //alert('删除')
+            $.ajax({
+                url:'/article/delete?id='+id,
+                type:'GET',
+                dataType:'json',
+                success:function (data) {
+                    alert(data.code + ':' + data.msg)
+                    if (data.code == "系统提示"){
+                        $('#info').html(data.msg)
+                        setTimeout(function () {
+                            //2秒后执行以下代码
+                            window.location.href='/article/list'
+                        },1000)
+                    }
+                }
+            })
+        }
+    });
+</script>
+</body>
+</html>

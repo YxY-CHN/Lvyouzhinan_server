@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>旅游指南后台管理系统</title>
+
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            background: #fff;
+            color: #1e5394;
+        } /* eaf3ff */
+        body, div, table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        body, td, div, input {
+            font-size: 9pt;
+        }
+
+        .top {
+            height: 100px;
+        }
+
+        .main {
+
+        }
+
+        table {
+            background: #000000;
+        }
+
+        td {
+            height: 20px;
+            line-height: 20px;
+            background: #cff;
+            padding: 4px;
+        }
+
+        td.item {
+            text-align: right;
+        }
+
+        td.input {
+            text-align: left;
+        }
+
+        td.button {
+            text-align: center;
+            height: 40px;
+        }
+    </style>
+
+</head>
+<body>
+<div class="top"></div>
+<div class="main">
+    <form name="loginform" action="admin/login" method="post">
+        <table width="350" border="0" cellspacing="1" cellpadding="0">
+            <tr>
+                <td colspan="2" align="center"><strong>旅 游 指 南 后 台 登 录 系 统</strong></td>
+            </tr>
+            <tr>
+                <td width="101" class="item">管理员名：</td>
+                <td width="246" class="input"><input name="name" type="text" id="name" size="30" /></td>
+            </tr>
+            <tr>
+                <td class="item">登录密码：</td>
+                <td class="input"><input name="password" type="password"
+                                         id="password" size="30" /></td>
+            </tr>
+
+            <tr>
+                <td colspan="2" class="button"><input type="submit"
+                                                      value=" 登 录 " /></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
